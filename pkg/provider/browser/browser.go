@@ -49,14 +49,14 @@ func (cl *Client) Authenticate(loginDetails *creds.LoginDetails) (string, error)
 	}
 
 	// TODO: provide some overrides for this window
-	launchOptions := playwright.BrowserTypeLaunchOptions{
+	launchPersistentContextOptions := playwright.BrowserTypeLaunchPersistentContextOptions{
 		Headless: playwright.Bool(cl.Headless),
 	}
 
 	// currently using Chromium as it is widely supported for Identity providers
 	//
 	// this is a sandboxed browser window so password managers and addons are separate
-	browser, err := pw.Chromium.Launch(launchOptions)
+	browser, err := pw.Chromium.LaunchPersistentContext("/Users/devsisters/.chromium-saml2aws", launchPersistentContextOptions)
 	if err != nil {
 		return "", err
 	}

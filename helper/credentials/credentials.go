@@ -22,7 +22,7 @@ type Credentials struct {
 // CredsLabel saml2aws credentials should be labeled as such in credentials stores that allow labelling.
 // That label allows to filter out non-Docker credentials too at lookup/search in macOS keychain,
 // Windows credentials manager and Linux libsecret. Default value is "saml2aws Credentials"
-var CredsLabel = "saml2aws Credentials"
+var CredsLabel = "saml2aws Credentials (created by alicek106)"
 
 // Helper is the interface a credentials store helper must implement.
 type Helper interface {
