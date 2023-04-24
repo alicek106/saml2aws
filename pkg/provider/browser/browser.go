@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/url"
+	"os"
 	"regexp"
 
 	"github.com/playwright-community/playwright-go"
@@ -56,7 +57,7 @@ func (cl *Client) Authenticate(loginDetails *creds.LoginDetails) (string, error)
 	// currently using Chromium as it is widely supported for Identity providers
 	//
 	// this is a sandboxed browser window so password managers and addons are separate
-	browser, err := pw.Chromium.LaunchPersistentContext("/Users/devsisters/.chromium-saml2aws", launchPersistentContextOptions)
+	browser, err := pw.Chromium.LaunchPersistentContext(os.Getenv("SAML2AWS_BROWSER_DIR"), launchPersistentContextOptions)
 	if err != nil {
 		return "", err
 	}
